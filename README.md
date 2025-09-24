@@ -1,1 +1,166 @@
 # juego_fiestas_patrias.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juego Fiestas Patrias – Secundaria</title>
+<style>
+body { font-family: Arial, sans-serif; text-align: center; background: #e6f0ff; margin:0; padding:0; }
+h1 { color: #003366; margin-top:20px;}
+button { margin: 10px; padding: 12px; font-size: 16px; cursor: pointer; border-radius: 12px; background: #00aaff; color: #fff; border: none; width: 80%; max-width: 300px; }
+button:hover { background: #0066cc; }
+#menu, #sopa, #vf, #opcion, #unir { display: none; margin-top: 20px; }
+#kimi-credit { color: #003366; font-size: 16px; margin-top: 10px; }
+.table-sopa { margin: auto; border-collapse: collapse; width: 90%; max-width: 400px; }
+.table-sopa td { width: 30px; height: 30px; border: 1px solid #666; text-align: center; font-weight: bold; cursor: pointer; user-select: none;}
+.table-sopa td.found { background: #99ff99; color: #000; }
+.option { margin: 5px; padding: 10px 18px; border-radius: 8px; border: none; cursor: pointer; background: #00ccff; color: #fff; width: 80%; max-width: 300px; }
+.option:hover { background: #ffcc00; color: #003366; font-weight: bold; }
+.draggable { margin: 5px; padding: 8px 15px; background: #00ccff; color: #fff; border-radius: 8px; cursor: grab; display: inline-block; }
+.dropzone { margin: 5px; padding: 10px 15px; border: 2px dashed #003366; min-width: 80%; max-width: 250px; display: inline-block; vertical-align: top; min-height: 35px; }
+.correct { background: #99ff99; }
+</style>
+</head>
+<body>
+
+<h1>🇳🇮 Juego de Fiestas Patrias – Secundaria</h1>
+
+<div id="inicio">
+  <button onclick="showMenu()">Iniciar Juego</button>
+  <p id="kimi-credit">Juego creado con ❤️ usando <strong>Kimi</strong></p>
+</div>
+
+<div id="menu">
+  <h2>Selecciona una actividad</h2>
+  <button onclick="showActivity('sopa')">🧩 Sopa de Letras</button>
+  <button onclick="showActivity('vf')">✅ Verdadero/Falso</button>
+  <button onclick="showActivity('opcion')">🔵 Opción Múltiple</button>
+  <button onclick="showActivity('unir')">🔗 Unir Conceptos</button>
+</div>
+
+<!-- Sopa de Letras -->
+<div id="sopa">
+  <h2>Sopa de Letras</h2>
+  <p>Encuentra estas palabras:</p>
+  <strong>PATRIA, BANDERA, INDEPENDENCIA, HÉROES, LIBERTAD, CONSTITUCIÓN, ESCUDO, NACIONAL, CIUDADANOS, HISTORIA, DEMOCRACIA</strong>
+  <table class="table-sopa" id="sopaTabla"></table>
+  <button onclick="showMenu()">Volver al Menú</button>
+</div>
+
+<!-- Verdadero/Falso -->
+<div id="vf">
+  <h2>Verdadero o Falso</h2>
+  <p>La bandera de Nicaragua es azul y blanco. ✅ Verdadero</p>
+  <p>El Día de la Independencia se celebra en diciembre. ❌ Falso</p>
+  <p>El escudo nacional tiene un triángulo. ✅ Verdadero</p>
+  <p>Los héroes patrios son figuras históricas importantes. ✅ Verdadero</p>
+  <p>La independencia de Nicaragua fue en 1900. ❌ Falso</p>
+  <p>El Himno Nacional se llama “Salve a ti, Nicaragua”. ✅ Verdadero</p>
+  <p>El lago Cocibolca también se llama Lago de Nicaragua. ✅ Verdadero</p>
+  <button onclick="showMenu()">Volver al Menú</button>
+</div>
+
+<!-- Opción Múltiple -->
+<div id="opcion">
+  <h2>Opción Múltiple</h2>
+  <p>¿En qué año se declaró la independencia de Nicaragua?</p>
+  <button class="option" onclick="alert('Incorrecto')">1822</button>
+  <button class="option" onclick="alert('Correcto')">1821</button>
+  <button class="option" onclick="alert('Incorrecto')">1838</button>
+  <button class="option" onclick="alert('Incorrecto')">1808</button>
+
+  <p>¿Cuál es el color de la bandera de Nicaragua?</p>
+  <button class="option" onclick="alert('Correcto')">Azul y blanco</button>
+  <button class="option" onclick="alert('Incorrecto')">Rojo y blanco</button>
+  <button class="option" onclick="alert('Incorrecto')">Verde y amarillo</button>
+  <button class="option" onclick="alert('Incorrecto')">Negro y rojo</button>
+
+  <p>¿Cuál es el lema nacional de Nicaragua?</p>
+  <button class="option" onclick="alert('Incorrecto')">Patria y honor</button>
+  <button class="option" onclick="alert('Incorrecto')">Libertad y justicia</button>
+  <button class="option" onclick="alert('Correcto')">Dios, patria y libertad</button>
+  <button class="option" onclick="alert('Incorrecto')">Unión y progreso</button>
+
+  <p>¿Qué símbolo representa la independencia de Nicaragua?</p>
+  <button class="option" onclick="alert('Incorrecto')">La montaña</button>
+  <button class="option" onclick="alert('Correcto')">La bandera</button>
+  <button class="option" onclick="alert('Incorrecto')">El escudo solo</button>
+  <button class="option" onclick="alert('Incorrecto')">El lago Cocibolca</button>
+
+  <p>¿Cuál es la capital de Nicaragua?</p>
+  <button class="option" onclick="alert('Correcto')">Managua</button>
+  <button class="option" onclick="alert('Incorrecto')">León</button>
+  <button class="option" onclick="alert('Incorrecto')">Granada</button>
+  <button class="option" onclick="alert('Incorrecto')">Estelí</button>
+
+  <button onclick="showMenu()">Volver al Menú</button>
+</div>
+
+<!-- Unir Conceptos -->
+<div id="unir">
+  <h2>Unir Conceptos</h2>
+  <p>Arrastra el concepto correcto al recuadro correspondiente:</p>
+  <div>
+    <div class="draggable" draggable="true" id="d1">Azul y blanco</div>
+    <div class="draggable" draggable="true" id="d2">Triángulo y montaña</div>
+    <div class="draggable" draggable="true" id="d3">Dios, patria y libertad</div>
+    <div class="draggable" draggable="true" id="d4">Figuras históricas</div>
+    <div class="draggable" draggable="true" id="d5">1821</div>
+    <div class="draggable" draggable="true" id="d6">Salve a ti, Nicaragua</div>
+    <div class="draggable" draggable="true" id="d7">Lago de Nicaragua</div>
+    <div class="draggable" draggable="true" id="d8">Democracia</div>
+  </div>
+  <div>
+    <div class="dropzone" data-answer="d1">Bandera →</div>
+    <div class="dropzone" data-answer="d2">Escudo →</div>
+    <div class="dropzone" data-answer="d3">Lema nacional →</div>
+    <div class="dropzone" data-answer="d4">Héroes →</div>
+    <div class="dropzone" data-answer="d5">Independencia →</div>
+    <div class="dropzone" data-answer="d6">Himno Nacional →</div>
+    <div class="dropzone" data-answer="d7">Lago →</div>
+    <div class="dropzone" data-answer="d8">Gobierno →</div>
+  </div>
+  <button onclick="checkUnir()">Verificar respuestas</button>
+  <button onclick="showMenu()">Volver al Menú</button>
+</div>
+
+<script>
+// Menú
+function showMenu(){
+  document.getElementById("inicio").style.display = "none";
+  document.getElementById("menu").style.display = "block";
+  document.getElementById("sopa").style.display = "none";
+  document.getElementById("vf").style.display = "none";
+  document.getElementById("opcion").style.display = "none";
+  document.getElementById("unir").style.display = "none";
+}
+function showActivity(id){
+  showMenu();
+  document.getElementById("menu").style.display = "none";
+  document.getElementById(id).style.display = "block";
+}
+
+// Unir Conceptos Interactivo
+let draggables = document.querySelectorAll('.draggable');
+let dropzones = document.querySelectorAll('.dropzone');
+draggables.forEach(d => { d.addEventListener('dragstart', dragStart); });
+dropzones.forEach(dz => { dz.addEventListener('dragover', dragOver); dz.addEventListener('drop', drop); });
+let dragged;
+function dragStart(e){ dragged = e.target; }
+function dragOver(e){ e.preventDefault(); }
+function drop(e){ e.preventDefault(); if(dragged){ e.target.appendChild(dragged); } }
+function checkUnir(){
+  let correct = 0;
+  dropzones.forEach(dz => {
+    if(dz.firstChild && dz.firstChild.id === dz.dataset.answer){
+      dz.firstChild.classList.add('correct');
+      correct++;
+    }
+  });
+  alert("Respuestas correctas: " + correct + " de " + dropzones.length);
+}
+</script>
+
+</body>
+</html>
